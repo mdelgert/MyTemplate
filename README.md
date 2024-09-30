@@ -1,3 +1,4 @@
+
 <img src="https://raw.githubusercontent.com/mdelgert/MultiProjectTemplate/refs/heads/main/Images/logo1.png?raw=true" alt="Logo" width="25%">
 
 # MultiProjectTemplate
@@ -6,14 +7,15 @@
 
 ## Description
 
-`MultiProjectTemplate` is a .NET 8 project template designed to streamline the creation of various project types, including Console applications, Web APIs, and more. It provides developers with a modular, customizable solution to scaffold new projects quickly while maintaining flexibility and best practices. This template is ideal for teams and individuals looking to standardize project structure, reduce boilerplate, and speed up the development process.
+`MultiProjectTemplate` is a .NET 8 project template designed to streamline the creation of various project types, including Console applications, Class Libraries, and Test Projects. It provides developers with a modular, customizable solution to scaffold new projects quickly while maintaining flexibility and best practices. This template is ideal for teams and individuals looking to standardize project structure, reduce boilerplate, and speed up the development process.
 
 ## Features
 
-- **Multiple Project Types**: Supports Console, Web API, and Class Library templates.
-- **Customization Options**: Configure settings like project names, namespaces, and authentication schemes.
+- **Multiple Project Types**: Supports Console applications, Class Libraries, and Test Projects.
+- **Customization Options**: Configure settings like project names and namespaces.
 - **Modular Design**: Easily extendable to fit your specific needs.
 - **Built-in Best Practices**: Follows recommended .NET coding standards and project organization.
+- **Pre-configured Docker Support**: Ready-made Dockerfile for quick containerization.
 
 ## Prerequisites
 
@@ -55,40 +57,44 @@ Once installed, you can create a new project using the `MultiProjectTemplate` by
 ### Console Application
 
 ```bash
-dotnet new multiproject -n MyConsoleApp -t console
-```
-
-### Web API Application
-
-```bash
-dotnet new multiproject -n MyWebAPI -t webapi
+dotnet new multi-template -n MyConsoleApp
 ```
 
 ### Class Library
 
 ```bash
-dotnet new multiproject -n MyLibrary -t classlib
+dotnet new multi-template -n MyClassLibrary
+```
+
+### Test Project
+
+```bash
+dotnet new multi-template -n MyTestProject
 ```
 
 ### Available Template Options
 
 - `-n | --name`: The name of your new project.
-- `-t | --type`: The type of project to create (e.g., `console`, `webapi`, `classlib`).
-- `--auth`: Add authentication options (e.g., `None`, `Individual`).
+- `-t | --type`: The type of project to create (e.g., `console`, `classlib`, `test`).
 
 ## Customization
 
-The `MultiProjectTemplate` allows for easy customization to fit different application types. After creating a project, you can modify configurations like:
+The `MultiProjectTemplate` allows for easy customization to fit different project types. After creating a project, you can modify configurations like:
 
 - Changing namespaces in the `.csproj` and code files.
-- Adding authentication by setting the `--auth` option.
-- Adding project dependencies in the solution using `dotnet add`.
+- Adding or modifying Docker support using the included Dockerfile and `DockerBuild.ps1` script.
+- Organizing solution structure using the `CleanFolders.ps1` script to clean up build artifacts.
 
-For example, to create a Web API project with authentication:
+## Docker Support
+
+This template comes with a pre-configured Dockerfile for easy containerization. You can build and run your projects in a Docker container using the following command:
 
 ```bash
-dotnet new multiproject -n MyAuthWebAPI -t webapi --auth Individual
+docker build -t multi-project-template .
+docker run --rm -e DOTNET_ENVIRONMENT=production multi-project-template
 ```
+
+If you want to automate the Docker build process, use the provided `DockerBuild.ps1` script.
 
 ## Contributing
 
@@ -113,6 +119,4 @@ A special thanks to all contributors who have helped in improving the template. 
 ## Contact Information
 
 If you have any questions or issues, feel free to open an issue in the GitHub repository.
-
----
-
+```

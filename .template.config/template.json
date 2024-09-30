@@ -1,21 +1,54 @@
 {
-    "$schema": "http://json.schemastore.org/template",
-    "author": "Your Name",
-    "classifications": ["Console"],
-    "identity": "MyTemplate.ConsoleApp",
-    "name": "Console App Template",
-    "shortName": "myconsoleapp",
-    "tags": {
-      "language": "C#",
-      "type": "project"
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Your Name",
+  "classifications": ["Console", "Library", "Test"],
+  "identity": "MultiProjectTemplate",
+  "name": "Multi Project Template",
+  "shortName": "multi-template",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "primaryOutputs": [
+    {
+      "path": "MultiProjectTemplate.ConsoleApp/MultiProjectTemplate.ConsoleApp.csproj"
     },
-    "sourceName": "MyTemplate.ConsoleApp",
-    "preferNameDirectory": true,
-    "symbols": {
-      "ProjectName": {
-        "type": "parameter",
-        "datatype": "string",
-        "defaultValue": "MyConsoleApp"
-      }
+    {
+      "path": "MultiProjectTemplate.ClassLibrary/MultiProjectTemplate.ClassLibrary.csproj"
+    },
+    {
+      "path": "MultiProjectTemplate.TestProject/MultiProjectTemplate.TestProject.csproj"
     }
-  }
+  ],
+  "symbols": {
+    "MyProductName": {
+      "type": "parameter",
+      "description": "The name of the product",
+      "replaces": "MyProduct"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(MyProductName != \"\")",
+          "rename": {
+            "MyProduct": "{MyProductName}"
+          }
+        }
+      ]
+    }
+  ],
+  "postActions": [
+    {
+      "actionId": "F403EC4B-33B2-41B3-8A60-6B481895AA47",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [
+        {
+          "text": "Run 'dotnet restore'"
+        }
+      ],
+      "continueOnError": true
+    }
+  ]
+}
