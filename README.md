@@ -119,4 +119,3 @@ A special thanks to all contributors who have helped in improving the template. 
 ## Contact Information
 
 If you have any questions or issues, feel free to open an issue in the GitHub repository.
-```
