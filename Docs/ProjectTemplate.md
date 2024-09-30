@@ -1,4 +1,3 @@
-Here’s a detailed markdown guide explaining how to implement a .NET 8 project template:
 
 ---
 

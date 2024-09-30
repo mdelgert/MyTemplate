@@ -1,4 +1,3 @@
-That’s an excellent prompt for generating a markdown guide on Serilog! Here's the markdown guide based on your provided structure:
 
 ---
 

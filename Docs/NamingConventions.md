@@ -1,3 +1,5 @@
+
+---
 # Best Naming Conventions in .NET 8
 
 Naming conventions play a critical role in writing clean, readable, and maintainable code. Following consistent naming conventions in .NET 8 helps teams collaborate effectively and maintain large projects with ease. This guide covers the most important naming conventions in .NET.
