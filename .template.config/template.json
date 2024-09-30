@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Your Name",
+    "classifications": ["Console"],
+    "identity": "MyTemplate.ConsoleApp",
+    "name": "Console App Template",
+    "shortName": "myconsoleapp",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    },
+    "sourceName": "MyTemplate.ConsoleApp",
+    "preferNameDirectory": true,
+    "symbols": {
+      "ProjectName": {
+        "type": "parameter",
+        "datatype": "string",
+        "defaultValue": "MyConsoleApp"
+      }
+    }
+  }
