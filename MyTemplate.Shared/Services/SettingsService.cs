@@ -2,20 +2,20 @@
 
 public class SettingsService
 {
-    private readonly SettingModel _Settings;
+    private readonly SettingModel _settings;
 
     public SettingsService(IConfiguration configuration)
     {
         // Get settings from the configuration and provide a new SettingModel as fallback
-        _Settings = configuration.GetSection("MyTemplate").Get<SettingModel>() ?? new SettingModel();
+        _settings = configuration.GetSection("MyTemplate").Get<SettingModel>() ?? new SettingModel();
 
-        _Settings.ExampleMessage = string.IsNullOrWhiteSpace(_Settings.ExampleMessage) ? "HelloWorld!" : _Settings.ExampleMessage;
+        _settings.ExampleMessage = string.IsNullOrWhiteSpace(_settings.ExampleMessage) ? "HelloWorld!" : _settings.ExampleMessage;
 
-        _Settings.ExampleCount = _Settings.ExampleCount > 0 ? _Settings.ExampleCount : 3;
+        _settings.ExampleCount = _settings.ExampleCount > 0 ? _settings.ExampleCount : 3;
     }
 
     public SettingModel GetSettings()
     {
-        return _Settings;
+        return _settings;
     }
 }

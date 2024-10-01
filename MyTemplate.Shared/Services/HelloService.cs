@@ -18,7 +18,7 @@ public class HelloService(SettingModel settings, ILogger<HelloService> logger)
         }
     }
 
-    public string GetExampleMessage()
+    public string GetExampleMessage(SettingModel settings)
     {
         return settings.ExampleMessage;
     }
