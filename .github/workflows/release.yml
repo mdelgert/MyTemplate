@@ -27,18 +27,18 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      # Publish the MultiProjectTemplate project with custom executable name
-      - name: Publish MultiProjectTemplate as self-contained application
-        run: dotnet publish ./MultiProjectTemplate.ConsoleApp/MultiProjectTemplate.ConsoleApp.csproj --configuration Release --runtime win-x64 --self-contained true --output ./output
+      # Publish the MyTemplate project with custom executable name
+      - name: Publish MyTemplate as self-contained application
+        run: dotnet publish ./MyTemplate.ConsoleApp/MyTemplate.ConsoleApp.csproj --configuration Release --runtime win-x64 --self-contained true --output ./output
       
         # Zip the output for release
       - name: Zip output
-        run: zip -r ./output/MultiProjectTemplate.zip ./output/*
+        run: zip -r ./output/MyTemplate.zip ./output/*
 
       # Upload the build artifact as a release asset
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ./output/MultiProjectTemplate.zip
+          files: ./output/MyTemplate.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

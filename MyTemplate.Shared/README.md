@@ -1,10 +1,10 @@
-# Project Title: MultiProjectTemplate.ClassLibrary
+# Project Title: MyTemplate.ClassLibrary
 
 _A brief tagline: A .NET project template for creating class libraries with integrated Serilog logging and hosting._
 
 ## Description
 
-**MultiProjectTemplate.ClassLibrary** is a .NET 8 project template designed to help developers quickly create class libraries with a robust logging and hosting setup. The project template leverages `Microsoft.Extensions.Hosting` and Serilog for structured logging, enabling developers to easily create reusable class libraries for various types of applications.
+**MyTemplate.ClassLibrary** is a .NET 8 project template designed to help developers quickly create class libraries with a robust logging and hosting setup. The project template leverages `Microsoft.Extensions.Hosting` and Serilog for structured logging, enabling developers to easily create reusable class libraries for various types of applications.
 
 ## Dependencies
 

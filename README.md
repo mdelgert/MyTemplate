@@ -1,13 +1,13 @@
 
-<img src="https://raw.githubusercontent.com/mdelgert/MultiProjectTemplate/refs/heads/main/Images/logo1.png?raw=true" alt="Logo" width="25%">
+<img src="https://raw.githubusercontent.com/mdelgert/MyTemplate/refs/heads/main/Images/logo1.png?raw=true" alt="Logo" width="25%">
 
-# MultiProjectTemplate
+# MyTemplate
 
 *A versatile .NET template for creating multiple project types with ease and flexibility.*
 
 ## Description
 
-`MultiProjectTemplate` is a .NET 8 project template designed to streamline the creation of various project types, including Console applications, Class Libraries, and Test Projects. It provides developers with a modular, customizable solution to scaffold new projects quickly while maintaining flexibility and best practices. This template is ideal for teams and individuals looking to standardize project structure, reduce boilerplate, and speed up the development process.
+`MyTemplate` is a .NET 8 project template designed to streamline the creation of various project types, including Console applications, Class Libraries, and Test Projects. It provides developers with a modular, customizable solution to scaffold new projects quickly while maintaining flexibility and best practices. This template is ideal for teams and individuals looking to standardize project structure, reduce boilerplate, and speed up the development process.
 
 ## Features
 
@@ -19,7 +19,7 @@
 
 ## Prerequisites
 
-To use the `MultiProjectTemplate`, you will need the following software and tools installed:
+To use the `MyTemplate`, you will need the following software and tools installed:
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
@@ -32,14 +32,14 @@ dotnet --version
 
 ## Installation
 
-You can install the `MultiProjectTemplate` template locally or globally.
+You can install the `MyTemplate` template locally or globally.
 
 ### Global Installation
 
 To install the template globally, run the following command:
 
 ```bash
-dotnet new --install MultiProjectTemplate
+dotnet new --install MyTemplate
 ```
 
 ### Local Installation
@@ -47,12 +47,12 @@ dotnet new --install MultiProjectTemplate
 Alternatively, to install the template locally, navigate to the directory where you have the `.nupkg` file and run:
 
 ```bash
-dotnet new --install ./path/to/MultiProjectTemplate.nupkg
+dotnet new --install ./path/to/MyTemplate.nupkg
 ```
 
 ## Usage
 
-Once installed, you can create a new project using the `MultiProjectTemplate` by running the following commands.
+Once installed, you can create a new project using the `MyTemplate` by running the following commands.
 
 ### Console Application
 
@@ -79,7 +79,7 @@ dotnet new multi-template -n MyTestProject
 
 ## Customization
 
-The `MultiProjectTemplate` allows for easy customization to fit different project types. After creating a project, you can modify configurations like:
+The `MyTemplate` allows for easy customization to fit different project types. After creating a project, you can modify configurations like:
 
 - Changing namespaces in the `.csproj` and code files.
 - Adding or modifying Docker support using the included Dockerfile and `DockerBuild.ps1` script.
@@ -90,8 +90,8 @@ The `MultiProjectTemplate` allows for easy customization to fit different projec
 This template comes with a pre-configured Dockerfile for easy containerization. You can build and run your projects in a Docker container using the following command:
 
 ```bash
-docker build -t multi-project-template .
-docker run --rm -e DOTNET_ENVIRONMENT=production multi-project-template
+docker build -t mytemplate .
+docker run --rm -e DOTNET_ENVIRONMENT=production mytemplate
 ```
 
 If you want to automate the Docker build process, use the provided `DockerBuild.ps1` script.

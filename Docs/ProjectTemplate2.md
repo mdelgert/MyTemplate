@@ -19,31 +19,31 @@ dotnet --version
 Start by creating a folder for your template:
 
 ```bash
-mkdir MultiProjectTemplate
-cd MultiProjectTemplate
+mkdir MyTemplate
+cd MyTemplate
 ```
 
 Inside this folder, you will create the following structure:
 
 ```
-MultiProjectTemplate/
+MyTemplate/
 │
-├── MultiProjectTemplate.ConsoleApp/
-│   └── MultiProjectTemplate.ConsoleApp.csproj
+├── MyTemplate.ConsoleApp/
+│   └── MyTemplate.ConsoleApp.csproj
 │
-├── MultiProjectTemplate.ClassLibrary/
-│   └── MultiProjectTemplate.ClassLibrary.csproj
+├── MyTemplate.ClassLibrary/
+│   └── MyTemplate.ClassLibrary.csproj
 │
-├── MultiProjectTemplate.TestProject/
-│   └── MultiProjectTemplate.TestProject.csproj
+├── MyTemplate.TestProject/
+│   └── MyTemplate.TestProject.csproj
 │
 └── .template.config/
     └── template.json
 ```
 
-- `MultiProjectTemplate.ConsoleApp/`: The folder for the Console project.
-- `MultiProjectTemplate.ClassLibrary/`: The folder for the Class Library project.
-- `MultiProjectTemplate.TestProject/`: The folder for the Test project.
+- `MyTemplate.ConsoleApp/`: The folder for the Console project.
+- `MyTemplate.ClassLibrary/`: The folder for the Class Library project.
+- `MyTemplate.TestProject/`: The folder for the Test project.
 - `.template.config/`: The folder that contains the template definition (`template.json`).
 
 ### Step 2: Create `template.json`
@@ -57,7 +57,7 @@ Here’s an example `template.json` file:
   "$schema": "http://json.schemastore.org/template",
   "author": "Your Name",
   "classifications": ["Console", "Library", "Test"],
-  "identity": "MultiProjectTemplate",
+  "identity": "MyTemplate",
   "name": "Multi Project Template",
   "shortName": "multi-template",
   "tags": {
@@ -66,13 +66,13 @@ Here’s an example `template.json` file:
   },
   "primaryOutputs": [
     {
-      "path": "MultiProjectTemplate.ConsoleApp/MultiProjectTemplate.ConsoleApp.csproj"
+      "path": "MyTemplate.ConsoleApp/MyTemplate.ConsoleApp.csproj"
     },
     {
-      "path": "MultiProjectTemplate.ClassLibrary/MultiProjectTemplate.ClassLibrary.csproj"
+      "path": "MyTemplate.ClassLibrary/MyTemplate.ClassLibrary.csproj"
     },
     {
-      "path": "MultiProjectTemplate.TestProject/MultiProjectTemplate.TestProject.csproj"
+      "path": "MyTemplate.TestProject/MyTemplate.TestProject.csproj"
     }
   ],
   "symbols": {
@@ -115,9 +115,9 @@ Now, create the actual .NET projects.
 
 #### Console Application
 
-1. Navigate to the `MultiProjectTemplate.ConsoleApp/` folder:
+1. Navigate to the `MyTemplate.ConsoleApp/` folder:
    ```bash
-   cd MultiProjectTemplate.ConsoleApp
+   cd MyTemplate.ConsoleApp
    ```
 2. Create a new .NET console project:
    ```bash
@@ -126,9 +126,9 @@ Now, create the actual .NET projects.
 
 #### Class Library
 
-1. Navigate to the `MultiProjectTemplate.ClassLibrary/` folder:
+1. Navigate to the `MyTemplate.ClassLibrary/` folder:
    ```bash
-   cd ../MultiProjectTemplate.ClassLibrary
+   cd ../MyTemplate.ClassLibrary
    ```
 2. Create a new .NET class library project:
    ```bash
@@ -137,9 +137,9 @@ Now, create the actual .NET projects.
 
 #### Test Project
 
-1. Navigate to the `MultiProjectTemplate.TestProject/` folder:
+1. Navigate to the `MyTemplate.TestProject/` folder:
    ```bash
-   cd ../MultiProjectTemplate.TestProject
+   cd ../MyTemplate.TestProject
    ```
 2. Create a new .NET test project:
    ```bash
@@ -160,9 +160,9 @@ If you want to test the projects together locally, you can add a solution and li
    ```
 3. Add the projects to the solution:
    ```bash
-   dotnet sln add MultiProjectTemplate.ConsoleApp/MultiProjectTemplate.ConsoleApp.csproj
-   dotnet sln add MultiProjectTemplate.ClassLibrary/MultiProjectTemplate.ClassLibrary.csproj
-   dotnet sln add MultiProjectTemplate.TestProject/MultiProjectTemplate.TestProject.csproj
+   dotnet sln add MyTemplate.ConsoleApp/MyTemplate.ConsoleApp.csproj
+   dotnet sln add MyTemplate.ClassLibrary/MyTemplate.ClassLibrary.csproj
+   dotnet sln add MyTemplate.TestProject/MyTemplate.TestProject.csproj
    ```
 
 This is optional but helpful if you want to work on all projects in one solution.

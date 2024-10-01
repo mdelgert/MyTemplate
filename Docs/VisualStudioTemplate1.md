@@ -1,16 +1,16 @@
-To distribute a Visual Studio template with one solution and multiple projects (like your `MultiProjectTemplate`), you can follow these steps to package the solution as a Visual Studio template:
+To distribute a Visual Studio template with one solution and multiple projects (like your `MyTemplate`), you can follow these steps to package the solution as a Visual Studio template:
 
 ### 1. Organize the Solution
 Make sure your solution and projects are organized in a way that can be easily packaged. Based on your description, your solution structure would look like this:
 
 ```
-MultiProjectTemplate/
-    ├── MultiProjectTemplate.ConsoleApp/
-    ├── MultiProjectTemplate.ClassLibrary/
-    ├── MultiProjectTemplate.TestProject/
+MyTemplate/
+    ├── MyTemplate.ConsoleApp/
+    ├── MyTemplate.ClassLibrary/
+    ├── MyTemplate.TestProject/
     ├── Settings/
     │   └── appsettings.development.json
-    └── MultiProjectTemplate.sln
+    └── MyTemplate.sln
 ```
 
 ### 2. Create a Template Manifest File (`.vstemplate`)
@@ -21,7 +21,7 @@ Each project should have a corresponding `.vstemplate` file to define how Visual
 - **Create a `.vstemplate` for the solution** to bundle all the projects together.
 
 #### Example for Solution-Level `.vstemplate`
-Create a file named `MultiProjectTemplate.vstemplate` in the root folder (same level as `MultiProjectTemplate.sln`).
+Create a file named `MyTemplate.vstemplate` in the root folder (same level as `MyTemplate.sln`).
 
 ```xml
 <VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
@@ -31,18 +31,18 @@ Create a file named `MultiProjectTemplate.vstemplate` in the root folder (same l
     <ProjectType>CSharp</ProjectType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>MultiProjectTemplate</DefaultName>
+    <DefaultName>MyTemplate</DefaultName>
   </TemplateData>
   <TemplateContent>
     <ProjectCollection>
-      <ProjectTemplateLink ProjectName="MultiProjectTemplate.ConsoleApp">
-        MultiProjectTemplate.ConsoleApp\MultiProjectTemplate.ConsoleApp.vstemplate
+      <ProjectTemplateLink ProjectName="MyTemplate.ConsoleApp">
+        MyTemplate.ConsoleApp\MyTemplate.ConsoleApp.vstemplate
       </ProjectTemplateLink>
-      <ProjectTemplateLink ProjectName="MultiProjectTemplate.ClassLibrary">
-        MultiProjectTemplate.ClassLibrary\MultiProjectTemplate.ClassLibrary.vstemplate
+      <ProjectTemplateLink ProjectName="MyTemplate.ClassLibrary">
+        MyTemplate.ClassLibrary\MyTemplate.ClassLibrary.vstemplate
       </ProjectTemplateLink>
-      <ProjectTemplateLink ProjectName="MultiProjectTemplate.TestProject">
-        MultiProjectTemplate.TestProject\MultiProjectTemplate.TestProject.vstemplate
+      <ProjectTemplateLink ProjectName="MyTemplate.TestProject">
+        MyTemplate.TestProject\MyTemplate.TestProject.vstemplate
       </ProjectTemplateLink>
     </ProjectCollection>
   </TemplateContent>
@@ -50,7 +50,7 @@ Create a file named `MultiProjectTemplate.vstemplate` in the root folder (same l
 ```
 
 #### Example for Console App Project `.vstemplate`
-Inside the `MultiProjectTemplate.ConsoleApp` folder, create a file named `MultiProjectTemplate.ConsoleApp.vstemplate`.
+Inside the `MyTemplate.ConsoleApp` folder, create a file named `MyTemplate.ConsoleApp.vstemplate`.
 
 ```xml
 <VSTemplate Version="3.0.0" Type="Project" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
@@ -62,7 +62,7 @@ Inside the `MultiProjectTemplate.ConsoleApp` folder, create a file named `MultiP
     <SortOrder>1000</SortOrder>
   </TemplateData>
   <TemplateContent>
-    <Project File="MultiProjectTemplate.ConsoleApp.csproj" ReplaceParameters="true">
+    <Project File="MyTemplate.ConsoleApp.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true">Program.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true">..\Settings\appsettings.development.json</ProjectItem>
     </Project>

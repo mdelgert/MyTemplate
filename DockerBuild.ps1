@@ -1,6 +1,6 @@
 # Variables
-$imageName = "multi-project-template"
-$containerName = "multi-project-template1"
+$imageName = "mytemplate"
+$containerName = "mytemplate1"
 $dockerFilePath = "Dockerfile"              # Path to the Dockerfile (assuming it's in the current directory)
 $dotnetEnvironment = "development"          # Set the DOTNET_ENVIRONMENT variable
 
@@ -64,18 +64,18 @@ Write-Host "Container $containerName is now running with DOTNET_ENVIRONMENT=$dot
 # 1. Stop and Remove Existing Container:
 #    - These commands stop and remove the container if it is running or exists in a stopped state.
 #    Commands:
-#      docker ps -q -f "name=multi-project-template1"  # Check if the container is running.
-#      docker stop multi-project-template1             # Stop the container if it's running.
-#      docker rm multi-project-template1               # Remove the container.
+#      docker ps -q -f "name=mytemplate1"  # Check if the container is running.
+#      docker stop mytemplate1             # Stop the container if it's running.
+#      docker rm mytemplate1               # Remove the container.
 #
 # 2. Rebuild the Docker Image:
-#    - This builds the Docker image using the specified Dockerfile and tags it as 'multi-project-template'. Docker will reuse cached layers where possible to speed up the build process.
+#    - This builds the Docker image using the specified Dockerfile and tags it as 'mytemplate'. Docker will reuse cached layers where possible to speed up the build process.
 #    Command:
-#      docker build -t multi-project-template -f Dockerfile .
+#      docker build -t mytemplate -f Dockerfile .
 #
 # 3. Run the Docker Container:
 #    - This runs the container with the environment variable DOTNET_ENVIRONMENT set to 'development'.
 #    Command:
-#      docker run --name multi-project-template1 -e "DOTNET_ENVIRONMENT=development" multi-project-template
+#      docker run --name mytemplate1 -e "DOTNET_ENVIRONMENT=development" mytemplate
 #
 # -----------------------------------------------------------------------------------------

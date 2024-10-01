@@ -100,12 +100,12 @@ ENTRYPOINT ["dotnet", "MyDotnetApp.dll"]
 Once the Dockerfile is ready, you can build the Docker image using the following Docker CLI command:
 
 ```bash
-docker build -t multi-project-template .
+docker build -t mytemplate .
 ```
 
 ### Explanation:
 - `docker build`: The command to build the Docker image.
-- `-t multi-project-template`: Tags the image with the name `multi-project-template`.
+- `-t mytemplate`: Tags the image with the name `mytemplate`.
 - `.`: Specifies the current directory as the build context.
 
 ---
@@ -115,14 +115,14 @@ docker build -t multi-project-template .
 Now that the image is built, you can run the containerized application:
 
 ```bash
-docker run --rm -e DOTNET_ENVIRONMENT=production multi-project-template
+docker run --rm -e DOTNET_ENVIRONMENT=production mytemplate
 ```
 
 ### Explanation:
 - `docker run`: Runs the container based on the built image.
 - `--rm`: Automatically removes the container after it exits.
 - `-e DOTNET_ENVIRONMENT=production`: Sets the `DOTNET_ENVIRONMENT` environment variable to `Production` in the container.
-- `multi-project-template`: The name of the image to run.
+- `mytemplate`: The name of the image to run.
 
 ---
 
@@ -141,14 +141,14 @@ docker login
 Tag the image with your Docker Hub username and repository name:
 
 ```bash
-docker tag multi-project-template your-dockerhub-username/multi-project-template:v1.0.0
+docker tag mytemplate your-dockerhub-username/mytemplate:v1.0.0
 ```
 
 ### Step 3: Push the Image
 Push the tagged image to Docker Hub:
 
 ```bash
-docker push your-dockerhub-username/multi-project-template:v1.0.0
+docker push your-dockerhub-username/mytemplate:v1.0.0
 ```
 
 ### Explanation:

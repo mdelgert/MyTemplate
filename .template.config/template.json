@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Your Name",
   "classifications": ["Console", "Library", "Test"],
-  "identity": "MultiProjectTemplate",
+  "identity": "MyTemplate",
   "name": "Multi Project Template",
   "shortName": "multi-template",
   "tags": {
@@ -11,13 +11,13 @@
   },
   "primaryOutputs": [
     {
-      "path": "MultiProjectTemplate.ConsoleApp/MultiProjectTemplate.ConsoleApp.csproj"
+      "path": "MyTemplate.ConsoleApp/MyTemplate.ConsoleApp.csproj"
     },
     {
-      "path": "MultiProjectTemplate.ClassLibrary/MultiProjectTemplate.ClassLibrary.csproj"
+      "path": "MyTemplate.ClassLibrary/MyTemplate.ClassLibrary.csproj"
     },
     {
-      "path": "MultiProjectTemplate.TestProject/MultiProjectTemplate.TestProject.csproj"
+      "path": "MyTemplate.TestProject/MyTemplate.TestProject.csproj"
     }
   ],
   "symbols": {

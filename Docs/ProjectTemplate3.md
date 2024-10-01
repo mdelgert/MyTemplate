@@ -34,7 +34,7 @@ dotnet new install PackageName
 For example:
 
 ```bash
-dotnet new install MyMultiProjectTemplate
+dotnet new install MyMyTemplate
 ```
 
 ## Listing Installed Templates
@@ -70,7 +70,7 @@ dotnet new uninstall ./path/to/template/folder
 Or, if you want to remove a template installed from NuGet:
 
 ```bash
-dotnet new uninstall MyMultiProjectTemplate
+dotnet new uninstall MyMyTemplate
 ```
 
 ## Packing a .NET Template for NuGet
