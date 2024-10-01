@@ -12,6 +12,7 @@ MyTemplate/
     ├── MyTemplate.ConsoleApp/
     ├── MyTemplate.Shared/
     ├── MyTemplate.TestProject/
+    ├── Scripts/
     ├── Settings/
     │   └── appsettings.development.json
     └── MyTemplate.sln
