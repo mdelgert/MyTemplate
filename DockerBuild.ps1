@@ -53,10 +53,11 @@ docker build -t $imageName -f $dockerFilePath .
 
 # Run the container with DOTNET_ENVIRONMENT set to the variable value
 Write-Host "Running container with name: $containerName and DOTNET_ENVIRONMENT=$dotnetEnvironment..."
-docker run --name $containerName -e "DOTNET_ENVIRONMENT=$dotnetEnvironment" $imageName
+
+#docker run --name $containerName -e "DOTNET_ENVIRONMENT=$dotnetEnvironment" $imageName
+docker run -p 5200:8080 --name $containerName -e "DOTNET_ENVIRONMENT=$dotnetEnvironment" $imageName
 
 Write-Host "Container $containerName is now running with DOTNET_ENVIRONMENT=$dotnetEnvironment."
-
 
 # -----------------------------------------------------------------------------------------
 # MANUAL COMMANDS TO RUN:
@@ -77,5 +78,5 @@ Write-Host "Container $containerName is now running with DOTNET_ENVIRONMENT=$dot
 #    - This runs the container with the environment variable DOTNET_ENVIRONMENT set to 'development'.
 #    Command:
 #      docker run --name mytemplate1 -e "DOTNET_ENVIRONMENT=development" mytemplate
-#
+#      docker run -p 5200:8080 --name mytemplate1 -e "DOTNET_ENVIRONMENT=development" mytemplate
 # -----------------------------------------------------------------------------------------
