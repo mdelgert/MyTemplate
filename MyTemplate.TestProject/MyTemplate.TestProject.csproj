@@ -18,7 +18,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MultiProjectTemplate.ClassLibrary\MultiProjectTemplate.ClassLibrary.csproj" />
+    <ProjectReference Include="..\MyTemplate.ConsoleApp\MyTemplate.ConsoleApp.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="Xunit" />

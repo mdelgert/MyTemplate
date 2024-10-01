@@ -1,4 +1,4 @@
-﻿namespace MultiProjectTemplate.ClassLibrary.Models;
+﻿namespace MyTemplate.Shared.Models;
 
 public class SettingModel
 {

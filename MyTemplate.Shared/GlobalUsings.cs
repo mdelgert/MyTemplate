@@ -1,4 +1,4 @@
 ﻿// GlobalUsings.cs
 global using Microsoft.Extensions.Configuration;
-global using MultiProjectTemplate.ClassLibrary.Models;
+global using MyTemplate.Shared.Models;
 global using Microsoft.Extensions.Logging;

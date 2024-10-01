@@ -1,4 +1,4 @@
-﻿namespace MultiProjectTemplate.ClassLibrary.Services;
+﻿namespace MyTemplate.Shared.Services;
 
 public class HelloService(SettingModel settings, ILogger<HelloService> logger)
 {

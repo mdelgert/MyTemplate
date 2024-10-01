@@ -1,4 +1,4 @@
-﻿namespace MultiProjectTemplate.ClassLibrary.Services;
+﻿namespace MyTemplate.Shared.Services;
 
 public class SettingsService
 {
@@ -7,7 +7,7 @@ public class SettingsService
     public SettingsService(IConfiguration configuration)
     {
         // Get settings from the configuration and provide a new SettingModel as fallback
-        _Settings = configuration.GetSection("MultiProjectTemplateSetting").Get<SettingModel>() ?? new SettingModel();
+        _Settings = configuration.GetSection("MyTemplate").Get<SettingModel>() ?? new SettingModel();
 
         _Settings.ExampleMessage = string.IsNullOrWhiteSpace(_Settings.ExampleMessage) ? "HelloWorld!" : _Settings.ExampleMessage;
 

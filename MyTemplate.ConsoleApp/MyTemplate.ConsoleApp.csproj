@@ -11,6 +11,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MultiProjectTemplate.ClassLibrary\MultiProjectTemplate.ClassLibrary.csproj" />
+    <ProjectReference Include="..\MyTemplate.Shared\MyTemplate.Shared.csproj" />
   </ItemGroup>
 </Project>

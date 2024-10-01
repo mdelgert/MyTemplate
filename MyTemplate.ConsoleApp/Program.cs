@@ -1,4 +1,4 @@
-﻿namespace MultiProjectTemplate.ConsoleApp;
+﻿namespace MyTemplate.ConsoleApp;
 
 internal class Program(IServiceProvider serviceProvider, ILogger<Program> logger)
 {
