@@ -2,13 +2,13 @@
 <package>
   <metadata>
     <!-- The unique identifier for your template package -->
-    <id>MyTemplate</id>
+    <id>MyTemplateMelgert</id>
     
     <!-- The version of your template -->
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     
     <!-- Authors of the package (your name or your organization's name) -->
-    <authors>Your Name</authors>
+    <authors>Matthew Elgert</authors>
     
     <!-- The title of your package -->
     <title>MyTemplate Project Template</title>
@@ -20,10 +20,10 @@
     <summary>Multi-project template with Console App, Shared Library, and xUnit Test Project</summary>
     
     <!-- The license under which your template is published -->
-    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <license type="expression">MIT</license>
     
     <!-- Your project’s website or GitHub repo (optional) -->
-    <projectUrl>https://github.com/your-repo/MyTemplate</projectUrl>
+    <projectUrl>https://github.com/mdelgert/MyTemplate</projectUrl>
     
     <!-- Tags that help identify your package -->
     <tags>dotnet new template, project template, .NET, Visual Studio template</tags>
@@ -37,12 +37,18 @@
         <dependency id="Microsoft.NET.Sdk" version="8.0.0" />
       </group>
     </dependencies>
+
+    <!-- Reference to the readme file -->
+    <readme>content/README.md</readme>
+
   </metadata>
-  
   <!-- Files to include in the package -->
   <files>
     <!-- This will include the necessary template files -->
-    <file src="..\MyTemplate\**\*" target="content\MyTemplate" />
+    <file src="..\MyTemplate\**\*" target="content\MyTemplate" exclude="**\bin\**;**\obj\**;**\Scripts\**" />
     <!-- You can specify specific paths if needed -->
+
+    <!-- Including the README.md file in the package -->
+    <file src="README.md" target="content/README.md" />
   </files>
 </package>
