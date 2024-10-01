@@ -7,7 +7,7 @@ Make sure your solution and projects are organized in a way that can be easily p
 MyTemplate/
     ├── MyTemplate.ConsoleApp/
     ├── MyTemplate.ClassLibrary/
-    ├── MyTemplate.TestProject/
+    ├── MyTemplate.Shared/
     ├── Settings/
     │   └── appsettings.development.json
     └── MyTemplate.sln
