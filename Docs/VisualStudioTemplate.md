@@ -1,8 +1,15 @@
+# Install templates
 ```PS
 dotnet new install . --force
 dotnet new uninstall .
 dotnet new --list
 dotnet new mytemplate -n demo
+```
+
+# List installed templates
+```PS
+dotnet new uninstall
+dotnet new uninstall C:\Source\MyTemplate (example uninstall)
 ```
 
 ```PS
