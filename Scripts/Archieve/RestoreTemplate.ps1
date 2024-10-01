@@ -1,3 +1,5 @@
+# Appears unecessary as working with out at the moment
+
 # Define paths
 $basePath = ".."  # This assumes the script is in the "Scripts" folder
 $filesToRestore = @(

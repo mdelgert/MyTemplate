@@ -1,53 +1,35 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "Your Name",
-  "classifications": ["Console", "Library", "Test"],
-  "identity": "MyTemplate",
-  "name": "Multi Project Template",
-  "shortName": "multi-template",
+  "author": "Matthew Elgert",
+  "classifications": [ "Console", "Shared Library", "xUnit Test" ],
+  "identity": "MyTemplate.Project", 
+  "name": "MyTemplate Solution Template",
+  "shortName": "mytemplate", 
   "tags": {
     "language": "C#",
     "type": "project"
   },
-  "primaryOutputs": [
-    {
-      "path": "MyTemplate.ConsoleApp/MyTemplate.ConsoleApp.csproj"
-    },
-    {
-      "path": "MyTemplate.ClassLibrary/MyTemplate.ClassLibrary.csproj"
-    },
-    {
-      "path": "MyTemplate.TestProject/MyTemplate.TestProject.csproj"
-    }
-  ],
+  "sourceName": "MyTemplate",
+  "preferNameDirectory": true,
   "symbols": {
-    "MyProductName": {
+    "skipRestore": {
       "type": "parameter",
-      "description": "The name of the product",
-      "replaces": "MyProduct"
+      "datatype": "bool",
+      "defaultValue": "false",
+      "description": "If specified, skips the automatic restore of the project on create."
     }
   },
-  "sources": [
-    {
-      "modifiers": [
-        {
-          "condition": "(MyProductName != \"\")",
-          "rename": {
-            "MyProduct": "{MyProductName}"
-          }
-        }
-      ]
-    }
-  ],
   "postActions": [
     {
-      "actionId": "F403EC4B-33B2-41B3-8A60-6B481895AA47",
+      "condition": "(!skipRestore)",
       "description": "Restore NuGet packages required by this project.",
       "manualInstructions": [
-        {
-          "text": "Run 'dotnet restore'"
-        }
+        { "text": "Run 'dotnet restore'" }
       ],
+      "actionId": "ECADF3DA-D99F-4D49-855D-4E04E5DB2DB2",
+      "args": {
+        "files": "MyTemplate.sln"
+      },
       "continueOnError": true
     }
   ]

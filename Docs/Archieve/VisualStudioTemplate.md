@@ -1,11 +1,3 @@
-```PS
-dotnet new install . --force
-dotnet new uninstall .
-dotnet new --list
-dotnet new mytemplate -n Demo1
-dotnet new mytemplate -n Demo1
-```
-
 Please provide how to create, install, list, remove and other related commands concepts for following visual studio template, it has solution named MyTemplate and projects MyTemplate.Shared, MyTemplate.TestProject and MyTemplate.ConsoleApp. Please provide suggestions the ways to deploy from nugget and GitHub. Include suggestion for easiest and best practices.
 
 MyTemplate/
