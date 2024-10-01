@@ -32,5 +32,12 @@
       },
       "continueOnError": true
     }
+  ],
+  "sources": [
+    {
+      "source": "./", 
+      "target": "./",
+      "exclude": [ "**/.*/**" ]
+    }
   ]
 }

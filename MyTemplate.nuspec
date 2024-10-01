@@ -45,10 +45,8 @@
   <!-- Files to include in the package -->
   <files>
     <!-- This will include the necessary template files -->
-    <file src="..\MyTemplate\**\*" target="content\MyTemplate" exclude="**\bin\**;**\obj\**;**\Scripts\**" />
-    <!-- You can specify specific paths if needed -->
-
-    <!-- Including the README.md file in the package -->
+    <file src="..\MyTemplate\**\*" target="content\MyTemplate" exclude="**\.*\**;**\bin\**;**\obj\**" />
     <file src="README.md" target="content/README.md" />
+    <!-- You can specify specific paths if needed -->
   </files>
 </package>
