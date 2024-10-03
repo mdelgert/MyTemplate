@@ -1,53 +1,77 @@
-﻿namespace MyTemplate.ConsoleApp;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using MyTemplate.Shared.Models;
+using MyTemplate.Shared.Services;
+using Serilog;
 
-internal class Program(IServiceProvider serviceProvider, ILogger<Program> logger)
+namespace MyTemplate.ConsoleApp;
+
+internal class Program
 {
-    private static async Task Main(string[] args)
+    private static void Main(string[] args)
     {
-        // Get the current environment (for example, from environment variables)
-        var environment = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "development").ToLowerInvariant();
+        // Allow passing environment via command-line argument or set from environment variables.
+        var environment = args.Length > 0 ? args[0].ToLowerInvariant() :
+            (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "production").ToLowerInvariant();
 
-        // Build configuration from appsettings.json
-        var config = new ConfigurationBuilder()
-            .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
+        // Build configuration
+        var configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", true, true)
+            .AddJsonFile($"appsettings.{environment}.json", true, true)
+            .AddEnvironmentVariables()
             .Build();
 
-        // Configure Serilog to use configuration from appsettings.json
+        // Configure Serilog from appsettings.json
         Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(config)
+            .ReadFrom.Configuration(configuration) // Load configuration from appsettings.json
             .CreateLogger();
 
-        // Set up dependency injection
-        var serviceProvider = new ServiceCollection()
-            .AddSingleton<IConfiguration>(config)
-            .AddLogging(loggingBuilder => loggingBuilder.AddSerilog())
-            .AddSingleton<SettingsService>()
-            .AddSingleton(sp => sp.GetRequiredService<SettingsService>().GetSettings())
-            .AddSingleton<HelloService>()
-            .BuildServiceProvider();
+        try
+        {
+            Log.Information("Starting the console app");
 
-        // Retrieve the logger and app
-        var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
-        var program = new Program(serviceProvider, logger);
+            // Create a Host for the console app
+            var host = Host.CreateDefaultBuilder(args)
+                .UseSerilog() // Use Serilog as the logging provider
+                .ConfigureAppConfiguration((context, config) =>
+                {
+                    var env = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "production")
+                        .ToLowerInvariant();
 
-        logger.LogInformation($"Begin:");
+                    Log.Information($"Loading configuration for {env} environment");
 
-        await program.RunAsync();
+                    config.AddJsonFile("appsettings.json", true, true)
+                          .AddJsonFile($"appsettings.{env}.json", true, true);
 
-        logger.LogInformation($"End:");
+                    config.AddEnvironmentVariables();
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    // Bind MyAppSettings from configuration with validation
+                    services.AddOptions<SettingsModel>()
+                        .Bind(context.Configuration.GetSection("MyAppTemplate"))
+                        .ValidateDataAnnotations()
+                        .Validate(settings => settings.TimeoutInSeconds > 0, "Timeout must be greater than 0");
 
-        // Dispose the service provider
-        await serviceProvider.DisposeAsync();
-    }
+                    // Register the application service
+                    services.AddTransient<TemplateService>();
+                })
+                .Build();
 
-    private async Task RunAsync()
-    {
-        // Retrieve the SettingModel from the service provider
-        var settings = serviceProvider.GetRequiredService<SettingModel>();
-        var helloService = serviceProvider.GetRequiredService<HelloService>();
+            // Resolve the service and run the app logic
+            var service = host.Services.GetRequiredService<TemplateService>();
 
-        logger.LogInformation($"RunAsync: {settings.ExampleMessage}");
-
-        await helloService.LogHelloAsync();
+            service.Run();
+        }
+        catch (Exception ex)
+        {
+            Log.Fatal(ex, "An error occurred while starting the application");
+        }
+        finally
+        {
+            Log.CloseAndFlush(); // Ensure that all logs are flushed before exit
+        }
     }
 }
