@@ -1,20 +1,8 @@
-﻿using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Logging;
-using MyTemplate.Shared.Models;
-using System.Text.Json;
+﻿namespace MyTemplate.Shared.Services;
 
-namespace MyTemplate.Shared.Services;
-
-public class TemplateService
+public class TemplateService(IOptions<SettingsModel> settings, ILogger<TemplateService> logger)
 {
-    private readonly SettingsModel _settings;
-    private readonly ILogger<TemplateService> _logger;
-
-    public TemplateService(IOptions<SettingsModel> settings, ILogger<TemplateService> logger)
-    {
-        _settings = settings.Value;
-        _logger = logger;
-    }
+    private readonly SettingsModel _settings = settings.Value;
 
     public void Run()
     {
@@ -22,27 +10,27 @@ public class TemplateService
         PrintSettings();
 
         // Log information about the settings
-        _logger.LogInformation("Timeout in milliseconds: {Timeout}", _settings.TimeoutInSeconds);
-        _logger.LogInformation("Is feature enabled: {IsFeatureEnabled}", _settings.IsFeatureEnabled);
+        logger.LogInformation("Timeout in milliseconds: {Timeout}", _settings.TimeoutInSeconds);
+        logger.LogInformation("Is feature enabled: {IsFeatureEnabled}", _settings.IsFeatureEnabled);
 
         try
         {
             if (_settings.IsFeatureEnabled)
             {
-                _logger.LogDebug("Feature is enabled. Executing feature logic...");
+                logger.LogDebug("Feature is enabled. Executing feature logic...");
             }
             else
             {
-                _logger.LogDebug("Feature is disabled.");
+                logger.LogDebug("Feature is disabled.");
             }
 
             // Simulate some work
             Thread.Sleep(_settings.TimeoutInSeconds);
-            _logger.LogInformation("Completed processing.");
+            logger.LogInformation("Completed processing.");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred during execution");
+            logger.LogError(ex, "An error occurred during execution");
         }
     }
 
@@ -54,6 +42,6 @@ public class TemplateService
             WriteIndented = true // Enable formatted (indented) JSON
         });
 
-        _logger.LogInformation("Current settings: {Settings}", formattedSettings);
+        logger.LogInformation("Current settings: {Settings}", formattedSettings);
     }
 }

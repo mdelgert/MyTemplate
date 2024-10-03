@@ -53,17 +53,22 @@ internal class Program
                     services.AddOptions<SettingsModel>()
                         .Bind(context.Configuration.GetSection("MyAppTemplate"))
                         .ValidateDataAnnotations()
-                        .Validate(settings => settings.TimeoutInSeconds > 0, "Timeout must be greater than 0");
+                        .Validate(settings => settings.TimeoutInSeconds > 0, "Timeout must be greater than 0")
+                        ;
 
                     // Register the application service
+
                     services.AddTransient<TemplateService>();
+                    services.AddTransient<ExampleService>();
                 })
                 .Build();
 
             // Resolve the service and run the app logic
             var service = host.Services.GetRequiredService<TemplateService>();
+            var example = host.Services.GetRequiredService<ExampleService>();
 
-            service.Run();
+            example.Hello();
+            //service.Run();
         }
         catch (Exception ex)
         {
