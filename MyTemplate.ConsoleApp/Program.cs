@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MyTemplate.Shared.Models;
 using MyTemplate.Shared.Services;
 using Serilog;
 
@@ -24,7 +23,7 @@ internal class Program
 
         // Configure Serilog from appsettings.json
         Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(configuration) // Load configuration from appsettings.json
+            .ReadFrom.Configuration(configuration)
             .CreateLogger();
 
         try
@@ -33,37 +32,18 @@ internal class Program
 
             // Create a Host for the console app
             var host = Host.CreateDefaultBuilder(args)
-                .UseSerilog() // Use Serilog as the logging provider
-                .ConfigureAppConfiguration((context, config) =>
-                {
-                    var env = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "production")
-                        .ToLowerInvariant();
-
-                    Log.Information($"Loading configuration for {env} environment");
-
-                    config.AddJsonFile("appsettings.json", true, true)
-                          .AddJsonFile($"appsettings.{env}.json", true, true);
-
-                    config.AddEnvironmentVariables();
-                })
+                .UseSerilog()
                 .ConfigureServices((context, services) =>
                 {
-                    // Bind MyAppSettings from configuration with validation
-                    services.AddOptions<SettingsModel>()
-                        .Bind(context.Configuration.GetSection("MyAppTemplate"));
-
-                    // Register the application service
+                    services.AddHttpClient<TimeService>();  // Register HttpClient for TimeService
                     services.AddTransient<TemplateService>();
                     services.AddTransient<ExampleService>();
                 })
                 .Build();
 
-            // Resolve the service and run the app logic
-            var service = host.Services.GetRequiredService<TemplateService>();
-            var example = host.Services.GetRequiredService<ExampleService>();
-
-            example.Hello();
-            service.Run();
+            // Resolve the TimeService and run the method
+            var timeService = host.Services.GetRequiredService<TimeService>();
+            timeService.GetTimeAsync().Wait();  // Make the REST call and log the response
         }
         catch (Exception ex)
         {
