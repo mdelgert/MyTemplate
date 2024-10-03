@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using MyTemplate.Shared.Models;
 using MyTemplate.Shared.Services;
 using Serilog;
@@ -51,13 +50,9 @@ internal class Program
                 {
                     // Bind MyAppSettings from configuration with validation
                     services.AddOptions<SettingsModel>()
-                        .Bind(context.Configuration.GetSection("MyAppTemplate"))
-                        .ValidateDataAnnotations()
-                        .Validate(settings => settings.TimeoutInSeconds > 0, "Timeout must be greater than 0")
-                        ;
+                        .Bind(context.Configuration.GetSection("MyAppTemplate"));
 
                     // Register the application service
-
                     services.AddTransient<TemplateService>();
                     services.AddTransient<ExampleService>();
                 })
@@ -68,7 +63,7 @@ internal class Program
             var example = host.Services.GetRequiredService<ExampleService>();
 
             example.Hello();
-            //service.Run();
+            service.Run();
         }
         catch (Exception ex)
         {
