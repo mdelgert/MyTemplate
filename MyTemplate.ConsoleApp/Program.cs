@@ -42,8 +42,11 @@ internal class Program
                 .Build();
 
             // Resolve the TimeService and run the method
-            var timeService = host.Services.GetRequiredService<TimeService>();
-            timeService.GetTimeAsync().Wait();  // Make the REST call and log the response
+            //var timeService = host.Services.GetRequiredService<TimeService>();
+            //timeService.GetTimeAsync().Wait();  // Make the REST call and log the response
+
+            var exampleService = host.Services.GetRequiredService<ExampleService>();
+            exampleService.Hello();  // Log the message from appsettings.json
         }
         catch (Exception ex)
         {
