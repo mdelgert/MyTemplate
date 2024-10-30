@@ -42,40 +42,13 @@ To install the template globally, run the following command:
 dotnet new --install MyTemplate
 ```
 
-### Local Installation
-
-Alternatively, to install the template locally, navigate to the directory where you have the `.nupkg` file and run:
-
-```bash
-dotnet new --install ./path/to/MyTemplate.nupkg
-```
-
 ## Usage
 
 Once installed, you can create a new project using the `MyTemplate` by running the following commands.
 
-### Console Application
-
 ```bash
-dotnet new multi-template -n MyConsoleApp
+dotnet new mytemplate -n myproject
 ```
-
-### Class Library
-
-```bash
-dotnet new multi-template -n MyClassLibrary
-```
-
-### Test Project
-
-```bash
-dotnet new multi-template -n MyTestProject
-```
-
-### Available Template Options
-
-- `-n | --name`: The name of your new project.
-- `-t | --type`: The type of project to create (e.g., `console`, `classlib`, `test`).
 
 ## Customization
 
