@@ -11,6 +11,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\Settings\appsettings.development.json" Link="aappsettings.development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\MyTemplate.Shared\MyTemplate.Shared.csproj" />
   </ItemGroup>
 </Project>

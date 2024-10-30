@@ -12,7 +12,7 @@ internal class Program
     {
         // Allow passing environment via command-line argument or set from environment variables.
         var environment = args.Length > 0 ? args[0].ToLowerInvariant() :
-            (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "production").ToLowerInvariant();
+            (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "development").ToLowerInvariant();
 
         // Build configuration
         var configuration = new ConfigurationBuilder()
