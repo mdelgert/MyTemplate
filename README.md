@@ -39,7 +39,7 @@ You can install the `MyTemplate` template locally or globally.
 To install the template globally, run the following command:
 
 ```bash
-dotnet new --install MyTemplate
+dotnet new install MyTemplate
 ```
 
 ## Usage
