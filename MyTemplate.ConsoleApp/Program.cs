@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyTemplate.Shared.Services;
+using MyTemplate.Shared.Models;
 using Serilog;
 
 namespace MyTemplate.ConsoleApp;
@@ -35,6 +36,7 @@ internal class Program
                 .UseSerilog()
                 .ConfigureServices((context, services) =>
                 {
+                    services.Configure<SettingsModel>(configuration.GetSection("MyAppTemplate"));
                     services.AddHttpClient<TimeService>();  // Register HttpClient for TimeService
                     services.AddTransient<TemplateService>();
                     services.AddTransient<ExampleService>();
